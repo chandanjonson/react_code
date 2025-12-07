@@ -1,8 +1,15 @@
-// src/components/ui/Button.jsx
-const Button = ({ children, className, ...props }) => (
-    <button className={`bg-blue-500 text-white p-2 rounded ${className}`} {...props}>
-        {children}
-    </button>
-);
 
-export default Button;
+import React from 'react';
+
+const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+    return (
+        <button
+            className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 ${className || ''}`}
+            ref={ref}
+            {...props}
+        />
+    );
+});
+Button.displayName = "Button";
+
+export { Button };

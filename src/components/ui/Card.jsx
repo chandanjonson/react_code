@@ -1,7 +1,34 @@
-const Card = ({ children, className, ...props }) => (
-    <button className={`bg-blue-500 text-white p-2 rounded ${className}`} {...props}>
+
+import React from 'react';
+
+const Card = ({ className, children, ...props }) => (
+    <div className={`rounded-xl border bg-card text-card-foreground shadow ${className || ''}`} {...props}>
         {children}
-    </button>
+    </div>
 );
 
-export default Card;
+const CardHeader = ({ className, children, ...props }) => (
+    <div className={`flex flex-col space-y-1.5 p-6 ${className || ''}`} {...props}>
+        {children}
+    </div>
+);
+
+const CardTitle = ({ className, children, ...props }) => (
+    <h3 className={`font-semibold leading-none tracking-tight ${className || ''}`} {...props}>
+        {children}
+    </h3>
+);
+
+const CardDescription = ({ className, children, ...props }) => (
+    <p className={`text-sm text-muted-foreground ${className || ''}`} {...props}>
+        {children}
+    </p>
+);
+
+const CardContent = ({ className, children, ...props }) => (
+    <div className={`p-6 pt-0 ${className || ''}`} {...props}>
+        {children}
+    </div>
+);
+
+export { Card, CardHeader, CardTitle, CardDescription, CardContent };
